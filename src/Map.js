@@ -86,11 +86,11 @@ const Map = () => {
 
         points.qz1.coordinates = qz1Source;
         points.phone.coordinates = phoneSource;
-        // points.fact.coordinates = factSource;
+        points.fact.coordinates = factSource;
 
         routes.qz1.source.data.geometry.coordinates = qz1Source;
         routes.phone.source.data.geometry.coordinates = phoneSource;
-        // routes.fact.source.data.geometry.coordinates = factSource;
+        routes.fact.source.data.geometry.coordinates = factSource;
 
 
         points.qz1.coordinates.forEach((point) => {
@@ -134,8 +134,8 @@ const Map = () => {
             map.addLayer(routes.qz1.layer);
             map.addSource('route-phone', routes.phone.source);
             map.addLayer(routes.phone.layer);
-            // map.addSource('route-fact', routes.fact.source);
-            // map.addLayer(routes.fact.layer);
+            map.addSource('route-fact', routes.fact.source);
+            map.addLayer(routes.fact.layer);
         });
 
         return () => map.remove();
