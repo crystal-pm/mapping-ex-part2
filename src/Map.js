@@ -32,6 +32,14 @@ const MarkerFact = ({ children }) => {
     );
 };
 
+const swapElements = (array) => {
+    for (let i=0; i<array.length; i++) {
+        let temp = array[i][0];
+        array[i][0] = array[i][1];
+        array[i][1] = temp;
+    }
+};
+
 const Map = () => {
     const mapContainerRef = useRef(null);
 
@@ -44,13 +52,45 @@ const Map = () => {
             zoom: 16.5,
         });
 
-        points.qz1.coordinates = sources.qz1.source;
-        points.phone.coordinates = sources.phone.source;
-        points.fact.coordinates = sources.fact.source;
+        let qz1Source;
+        let phoneSource;
+        let factSource;
+        if (sources.qz1.lat_lan_type === 1) {
+            let array = [];
+            for (let i=0; i<sources.qz1.source.length; i++) {
+                array[i] = [...sources.qz1.source[i]].reverse();
+            }
+            qz1Source = array;
+        } else {
+            qz1Source = sources.qz1.source;
+        }
+        if (sources.phone.lat_lan_type === 1) {
+            let array = [];
+            for (let i=0; i<sources.phone.source.length; i++) {
+                array[i] = [...sources.phone.source[i]].reverse();
+            }
+            phoneSource = array;
+        } else {
+            phoneSource = sources.phone.source;
+        }
+        if (sources.fact.lat_lan_type === 1) {
+            let array = [];
+            for (let i=0; i<sources.fact.source.length; i++) {
+                array[i] = [...sources.fact.source[i]].reverse();
+            }
+            factSource = array;
+        } else {
+            factSource = sources.fact.source;
+        }
 
-        routes.qz1.source.data.geometry.coordinates = sources.qz1.source;
-        routes.phone.source.data.geometry.coordinates = sources.phone.source;
-        routes.fact.source.data.geometry.coordinates = sources.fact.source;
+
+        points.qz1.coordinates = qz1Source;
+        points.phone.coordinates = phoneSource;
+        // points.fact.coordinates = factSource;
+
+        routes.qz1.source.data.geometry.coordinates = qz1Source;
+        routes.phone.source.data.geometry.coordinates = phoneSource;
+        // routes.fact.source.data.geometry.coordinates = factSource;
 
 
         points.qz1.coordinates.forEach((point) => {
@@ -75,16 +115,16 @@ const Map = () => {
                 .addTo(map);
         });
 
-        points.fact.coordinates.forEach((point) => {
-            const ref = React.createRef();
-            ref.current = document.createElement('div');
-            createRoot(ref.current).render(
-                <MarkerFact feature={point} />
-            );
-            new mapboxgl.Marker(ref.current)
-                .setLngLat(point)
-                .addTo(map);
-        });
+        // points.fact.coordinates.forEach((point) => {
+        //     const ref = React.createRef();
+        //     ref.current = document.createElement('div');
+        //     createRoot(ref.current).render(
+        //         <MarkerFact feature={point} />
+        //     );
+        //     new mapboxgl.Marker(ref.current)
+        //         .setLngLat(point)
+        //         .addTo(map);
+        // });
 
         // Add navigation control (the +/- zoom buttons)
         map.addControl(new mapboxgl.NavigationControl(), 'top-right');
@@ -94,11 +134,10 @@ const Map = () => {
             map.addLayer(routes.qz1.layer);
             map.addSource('route-phone', routes.phone.source);
             map.addLayer(routes.phone.layer);
-            map.addSource('route-fact', routes.fact.source);
-            map.addLayer(routes.fact.layer);
+            // map.addSource('route-fact', routes.fact.source);
+            // map.addLayer(routes.fact.layer);
         });
 
-        // Clean up on unmount
         return () => map.remove();
     }, []);
 
