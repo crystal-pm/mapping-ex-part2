@@ -22,7 +22,7 @@
 .marker-qz1 {
     background-color: #3c6cff;
     color: white;
-    padding: 4px;
+    padding: 3px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -34,7 +34,7 @@
 .marker-phone {
     background-color: #38bd3e;
     color: white;
-    padding: 4px;
+    padding: 3px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -46,7 +46,7 @@
 .marker-fact {
     background-color: #bb2fa3;
     color: white;
-    padding: 4px;
+    padding: 3px;
     text-align: center;
     text-decoration: none;
     display: inline-block;

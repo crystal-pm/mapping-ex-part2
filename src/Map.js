@@ -3,7 +3,8 @@ import React, { useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 import points from './points.json';
 import routes from './routes.json';
-import sources from './souces.json';
+import sources from './sources_part2.json';
+// import sources from './ride_history1.json';
 import './Map.css';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidG9iaTAxMTgiLCJhIjoiY2x0MmJ1YzZoMWp2YjJpbzFjamRzazF1MiJ9.Tb_QQbdTH_9KxeDaZ33F1w';

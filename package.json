@@ -2,6 +2,7 @@
   "name": "map-sample",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://github.com/doc-gif/map-sample",
   "dependencies": {
     "@mapbox/mapbox-gl-language": "^1.0.1",
     "@testing-library/jest-dom": "^5.17.0",
@@ -17,7 +18,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "rm": "rmdir /S docs",
+    "mv": "move build docs",
+    "git": "git add . && git commit && git push origin master",
+    "deploy": "npm run rm && npm run build && npm run mv && npm run git"
   },
   "eslintConfig": {
     "extends": [
