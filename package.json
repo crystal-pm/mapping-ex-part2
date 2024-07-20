@@ -2,15 +2,17 @@
   "name": "map-sample",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/doc-gif/map-sample",
+  "homepage": "https://doc-gif.github.io/map-sample/",
   "dependencies": {
     "@mapbox/mapbox-gl-language": "^1.0.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "gh-pages": "^6.1.1",
     "mapbox-gl": "^3.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.25.1",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
@@ -19,10 +21,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "rm": "rmdir /S docs",
-    "mv": "move build docs",
-    "git": "git add . && git commit && git push origin master",
-    "deploy": "npm run rm && npm run build && npm run mv && npm run git"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

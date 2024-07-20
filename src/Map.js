@@ -49,8 +49,8 @@ const Map = () => {
         const map = new mapboxgl.Map({
             container: mapContainerRef.current,
             style: 'mapbox://styles/mapbox/light-v11',
-            center: [136.8865, 35.175],
-            zoom: 16.5,
+            center: [136.897505, 35.173245],
+            zoom: 16,
         });
 
         let qz1Source;
