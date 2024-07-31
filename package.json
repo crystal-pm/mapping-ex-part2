@@ -2,7 +2,7 @@
   "name": "map-sample",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://doc-gif.github.io/map-sample/",
+  "homepage": "https://doc-gif.github.io",
   "dependencies": {
     "@mapbox/mapbox-gl-language": "^1.0.1",
     "@testing-library/jest-dom": "^5.17.0",
